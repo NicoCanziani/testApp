@@ -23,7 +23,7 @@ export default function App() {
         </View>
       </View>
       <View style={{ flex: 0.5 }}>
-        <Text style={styles.loginText}>Ingreso</Text>
+        <Text style={styles.loginText}>Ingreso xdddd</Text>
         <TextInput
           style={styles.textInput}
           placeholder="Usuario"
