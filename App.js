@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,8 +13,21 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
+import CommonButton from "./src/components/CommonButton";
 
 export default function App() {
+  const [enable, setEnable] = useState();
+  const [user, setUser] = useState();
+  const [password, setPassword] = useState();
+  const [eye, setEye] = useState(false);
+  const [secureTextEntry, setSecureTextEntry] = useState(false);
+
+  const handleTouchableOpacity = async () => {
+    const eyeName = secureTextEntry ? "eye-off" : "eye";
+    setSecureTextEntry(true);
+    setEye(eyeName);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -23,8 +37,9 @@ export default function App() {
         </View>
       </View>
       <View style={{ flex: 0.5 }}>
-        <Text style={styles.loginText}>Ingreso xdddd</Text>
+        <Text style={styles.loginText}>Ingreso</Text>
         <TextInput
+          value={user}
           style={styles.textInput}
           placeholder="Usuario"
           placeholderTextColor={styles.placeholderTextColor}
@@ -32,14 +47,18 @@ export default function App() {
         />
         <View style={styles.inputPassword}>
           <TextInput
+            value={password}
             style={styles.textInput}
             placeholder="Clave"
             placeholderTextColor={styles.placeholderTextColor}
             secureTextEntry={true}
           />
-          <TouchableOpacity>
-            <Ionicons name='eye' size={wp("6%")} />
+          <TouchableOpacity onPress={handleTouchableOpacity}>
+            <Ionicons  value={eye} size={wp("6%")} />
           </TouchableOpacity>
+        </View>
+        <View style={{ marginTop: hp("5%") }}>
+          <CommonButton text={"INICIAR SESIÓN"} disabled={enable} />
         </View>
       </View>
     </View>
@@ -60,6 +79,11 @@ const styles = StyleSheet.create({
   secondaryTopScreen: {
     marginTop: hp("30%"),
     alignSelf: "center",
+  },
+  bottomScreen: {
+    backgroundColor: "orange",
+    borderBottomTopRadius: hp("3%"),
+    marginTop: hp("5%"),
   },
   screenTitle: {
     color: "white",
