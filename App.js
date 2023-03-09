@@ -14,6 +14,7 @@ import {
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
 import CommonButton from "./src/components/CommonButton";
+import ForgotPasswordButton from "./src/components/ForgotPassword";
 
 export default function App() {
   const [enable, setEnable] = useState();
@@ -54,11 +55,14 @@ export default function App() {
             secureTextEntry={secureTextEntry}
           />
           <TouchableOpacity onPress={handleTouchableOpacity}>
-            <Ionicons name={eye} size={wp("6%")} />
+            <Ionicons name={eye} size={wp("6%")} color={"#979797"}/>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: hp("5%") }}>
-          <CommonButton text={"INICIAR SESIÓN"} disabled={enable} />
+          <CommonButton text={"INICIAR SESIÓN"} disabled={enable}/>
+        </View>
+        <View style={{ marginTop: hp("2%") }}>
+          <ForgotPasswordButton text={"OLVIDE MI CLAVE"}/>
         </View>
       </View>
     </View>
