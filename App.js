@@ -19,12 +19,12 @@ export default function App() {
   const [enable, setEnable] = useState();
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
-  const [eye, setEye] = useState(false);
+  const [eye, setEye] = useState("eye");
   const [secureTextEntry, setSecureTextEntry] = useState(false);
 
   const handleTouchableOpacity = async () => {
     const eyeName = secureTextEntry ? "eye-off" : "eye";
-    setSecureTextEntry(true);
+    setSecureTextEntry(!secureTextEntry);
     setEye(eyeName);
   };
 
@@ -51,10 +51,10 @@ export default function App() {
             style={styles.textInput}
             placeholder="Clave"
             placeholderTextColor={styles.placeholderTextColor}
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntry}
           />
           <TouchableOpacity onPress={handleTouchableOpacity}>
-            <Ionicons  value={eye} size={wp("6%")} />
+            <Ionicons name={eye} size={wp("6%")} />
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: hp("5%") }}>
