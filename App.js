@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -15,6 +14,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import CommonButton from "./src/components/CommonButton";
 import ForgotPasswordButton from "./src/components/ForgotPassword";
+import styles from "./styles";
 
 export default function App() {
   const [enable, setEnable] = useState();
@@ -61,67 +61,15 @@ export default function App() {
         <View style={{ marginTop: hp("2%") }}>
           <ForgotPasswordButton text={"OLVIDE MI CLAVE"} />
         </View>
-        <Text style={styles.linkText}>Términos y condiciones</Text>
+        <View style={{ marginBottom: 10 }}>
+          <TouchableOpacity>
+            <Text style={styles.linkText}>Términos y condiciones</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.bottomScreen}>
+          <Text style={styles.versionText}>Versión: 1.0</Text>
+        </View>
       </View>
-      <View style={styles.bottomScreen}></View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  topScreen: {
-    flex: 0.5,
-    backgroundColor: "orange",
-    borderBottomRightRadius: hp("3%"),
-    borderBottomLeftRadius: hp("3%"),
-  },
-  bottomScreen: {
-    flex: 0.05,
-    backgroundColor: "orange",
-    borderTopRightRadius: hp("3%"),
-    borderTopLeftRadius: hp("3%"),
-  },
-  secondaryTopScreen: {
-    marginTop: hp("30%"),
-    alignSelf: "center",
-  },
-  screenTitle: {
-    color: "white",
-    fontSize: hp("3%"),
-    fontWeight: "500",
-  },
-  loginText: {
-    fontSize: hp("2.5%"),
-    fontWeight: "500",
-    alignSelf: "center",
-    marginTop: hp("3%"),
-  },
-  textInput: {
-    borderBottomWidth: 0.5,
-    borderBottomColor: "grey",
-    alignSelf: "center",
-    width: wp("90%"),
-    height: hp("6%"),
-    marginTop: hp("3%"),
-  },
-  placeholderTextColor: {
-    color: "rgba(0, 0, 0,0.38)",
-  },
-  inputPassword: {
-    paddingHorizontal: wp("10%"),
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  linkText: {
-    textAlign: "center",
-    marginTop: hp("2%"),
-    color: "blue",
-    fontWeight: "bold",
-    textDecorationLine: "underline",
-  },
-});
