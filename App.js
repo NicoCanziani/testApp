@@ -24,9 +24,7 @@ export default function App() {
   const [secureTextEntry, setSecureTextEntry] = useState(false);
 
   const handleTouchableOpacity = async () => {
-    const eyeName = secureTextEntry ? "eye-off" : "eye";
-    setSecureTextEntry(!secureTextEntry);
-    setEye(eyeName);
+    //funcion para ver contraseña apretando el ojito
   };
 
   return (
@@ -52,19 +50,20 @@ export default function App() {
             style={styles.textInput}
             placeholder="Clave"
             placeholderTextColor={styles.placeholderTextColor}
-            secureTextEntry={secureTextEntry}
           />
           <TouchableOpacity onPress={handleTouchableOpacity}>
-            <Ionicons name={eye} size={wp("6%")} color={"#979797"}/>
+            <Ionicons name="eye" size={wp("6%")} color={"#979797"} />
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: hp("5%") }}>
-          <CommonButton text={"INICIAR SESIÓN"} disabled={enable}/>
+          <CommonButton text={"INICIAR SESIÓN"} disabled={enable} />
         </View>
         <View style={{ marginTop: hp("2%") }}>
-          <ForgotPasswordButton text={"OLVIDE MI CLAVE"}/>
+          <ForgotPasswordButton text={"OLVIDE MI CLAVE"} />
         </View>
+        <Text style={styles.linkText}>Términos y condiciones</Text>
       </View>
+      <View style={styles.bottomScreen}></View>
     </View>
   );
 }
@@ -80,14 +79,15 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: hp("3%"),
     borderBottomLeftRadius: hp("3%"),
   },
+  bottomScreen: {
+    flex: 0.05,
+    backgroundColor: "orange",
+    borderTopRightRadius: hp("3%"),
+    borderTopLeftRadius: hp("3%"),
+  },
   secondaryTopScreen: {
     marginTop: hp("30%"),
     alignSelf: "center",
-  },
-  bottomScreen: {
-    backgroundColor: "orange",
-    borderBottomTopRadius: hp("3%"),
-    marginTop: hp("5%"),
   },
   screenTitle: {
     color: "white",
@@ -116,5 +116,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+  },
+  linkText: {
+    textAlign: "center",
+    marginTop: hp("2%"),
+    color: "blue",
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 });
