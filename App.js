@@ -1,12 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  KeyboardAvoidingView,
-  TouchableOpacity,
-} from "react-native";
+import { Text, TextInput, View, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -24,7 +18,9 @@ export default function App() {
   const [secureTextEntry, setSecureTextEntry] = useState(false);
 
   const handleTouchableOpacity = async () => {
-    //funcion para ver contraseña apretando el ojito
+    const eyeName = secureTextEntry ? "eye-off" : "eye";
+    setSecureTextEntry(!secureTextEntry);
+    setEye(eyeName);
   };
 
   return (
@@ -50,9 +46,10 @@ export default function App() {
             style={styles.textInput}
             placeholder="Clave"
             placeholderTextColor={styles.placeholderTextColor}
+            secureTextEntry={secureTextEntry}
           />
           <TouchableOpacity onPress={handleTouchableOpacity}>
-            <Ionicons name="eye" size={wp("6%")} color={"#979797"} />
+            <Ionicons name={eye} size={wp("6%")} color={"#979797"} />
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: hp("5%") }}>
